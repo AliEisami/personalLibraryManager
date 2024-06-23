@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Book</h1>
+        <form method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="{{ book.author }}">
+            <label for="year">Year:</label>
+            <input type="number" max="{{ current_year }}" id="year" name="year" value="{{ book.year }}">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" pattern="[A-Za-z\s]+" name="genre" value="{{ book.genre }}">
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</body>
+</html>

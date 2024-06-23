@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Book List</h1>
+        <a href="/">Home</a>
+        <a href="/add">Add Book</a>
+        <ul>
+            {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author }} ({{ book.year }}) - {{ book.genre }} - borrowed: {{book.borrow['name']}}
+                <div class="actions">
+                    <a href="{{ url_for('edit_book', title=book.title) }}">Edit</a>
+                    <a href="{{ url_for('delete_book', title=book.title) }}">Delete</a>
+                    {% if book.borrow %}
+                        <a href="{{ url_for('return_book', title=book.title) }}">Return</a>
+                    {% else %}
+                        <a href="{{ url_for('borrow_book', title=book.title) }}">Borrow</a>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
