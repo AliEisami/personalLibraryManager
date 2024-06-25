@@ -30,13 +30,13 @@ def add_book():
             try:
                 year = int(year)
                 if year > current_year:
-                    error = f"Year cannot be in the future!!"
+                    error = f"Year cannot be in the future!!!"
                 else:
                     new_book = Book(title, author, year, genre)
                     library.add_book(new_book)
                     return redirect(url_for('list_books'))
             except ValueError:
-                error = "Year must be a number."
+                error = "Year must be a number!"
         else:
             error = "You have to fill them all"
     return render_template('add_book.html', error=error, current_year=current_year)
@@ -77,6 +77,7 @@ def borrow_book(title):
         library.borrow_book(book.title, stud_name, stud_id)
         return redirect(url_for('list_books'))
     return render_template('borrow_book.html', book=book)
+
 
 @app.route('/return/<title>', methods=['GET', 'POST'])
 def return_book(title):

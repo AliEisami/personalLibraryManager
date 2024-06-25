@@ -37,7 +37,8 @@ class Library:
                 return book
         return None
 
-    # function to edit an existing book in the books array
+    # function to edit a
+    # n existing book in the books array
     def edit_book(self, old_title, new_book):
         for i, book in enumerate(self.books):
             if book.title == old_title:
