@@ -78,6 +78,7 @@ def borrow_book(title):
         return redirect(url_for('list_books'))
     return render_template('borrow_book.html', book=book)
 
+
 @app.route('/return/<title>', methods=['GET', 'POST'])
 def return_book(title):
     book = library.get_book(title)

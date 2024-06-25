@@ -10,6 +10,7 @@
         <a href="/">Home</a>
         <a href="/add">Add Book</a>
         <ul>
+
             {% for book in books %}
             <li>
                 <strong>{{ book.title }}</strong> by {{ book.author }} ({{ book.year }}) - {{ book.genre }} - borrowed: {{book.borrow['name']}}
